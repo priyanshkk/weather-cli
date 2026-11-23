@@ -1,0 +1,3 @@
+# Standard library only - no third-party runtime dependencies.
+# Install the package itself from a source checkout:
+-e .

@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "weather-cli"
+version = "1.1.0"
+description = "A standard-library CLI for current weather from Open-Meteo."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Priyanshu Kumar" }]
+keywords = ["weather", "cli", "open-meteo", "stdlib"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6", "mypy>=1.10", "build>=1.2"]
+
+[project.scripts]
+weather-cli = "weather_cli.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/priyanshkk/weather-cli"
+Repository = "https://github.com/priyanshkk/weather-cli"
+Issues = "https://github.com/priyanshkk/weather-cli/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/weather_cli"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
